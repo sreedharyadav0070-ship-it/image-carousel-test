@@ -1,0 +1,358 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Image Carousel</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            background: #111;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* ================= TITLE ================= */
+
+        .title {
+
+            text-align: center;
+
+            padding: 30px 15px 20px;
+
+        }
+
+
+        .title h1 {
+
+            font-size: 28px;
+
+        }
+
+
+        /* ================= CAROUSEL ================= */
+
+        .carousel {
+
+            width: 100%;
+
+            overflow: hidden;
+
+            padding: 10px 0 30px;
+
+        }
+
+
+        .carousel-track {
+
+            display: flex;
+
+            gap: 15px;
+
+            width: max-content;
+
+            animation: scroll 30s linear infinite;
+
+        }
+
+
+        /* ================= IMAGE ================= */
+
+        .slide {
+
+            width: 80vw;
+
+            max-width: 500px;
+
+            height: 300px;
+
+            flex-shrink: 0;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+        }
+
+
+        .slide img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* ================= AUTOMATIC SCROLL ================= */
+
+        @keyframes scroll {
+
+            0% {
+
+                transform: translateX(0);
+
+            }
+
+            100% {
+
+                transform: translateX(-50%);
+
+            }
+
+        }
+
+
+        /* ================= PHONE ================= */
+
+        @media (max-width: 600px) {
+
+            .title h1 {
+
+                font-size: 24px;
+
+            }
+
+
+            .carousel-track {
+
+                gap: 10px;
+
+                animation-duration: 25s;
+
+            }
+
+
+            .slide {
+
+                width: 82vw;
+
+                height: 250px;
+
+                border-radius: 15px;
+
+            }
+
+        }
+
+
+        /* ================= TABLET / DESKTOP ================= */
+
+        @media (min-width: 601px) {
+
+            .slide {
+
+                height: 350px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= TITLE ================= -->
+
+<div class="title">
+
+    <h1>📸 Image Gallery</h1>
+
+</div>
+
+
+
+<!-- ================= CAROUSEL ================= -->
+
+<div class="carousel">
+
+
+    <div class="carousel-track">
+
+
+        <!-- PHOTO 1 -->
+
+        <div class="slide">
+
+            <img src="images/photo1.jpg"
+                 alt="Photo 1">
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="slide">
+
+            <img src="images/photo2.jpg"
+                 alt="Photo 2">
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div class="slide">
+
+            <img src="images/photo3.jpg"
+                 alt="Photo 3">
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+
+        <div class="slide">
+
+            <img src="images/photo4.jpg"
+                 alt="Photo 4">
+
+        </div>
+
+
+        <!-- PHOTO 5 -->
+
+        <div class="slide">
+
+            <img src="images/photo5.jpg"
+                 alt="Photo 5">
+
+        </div>
+
+
+        <!-- PHOTO 6 -->
+
+        <div class="slide">
+
+            <img src="images/photo6.jpg"
+                 alt="Photo 6">
+
+        </div>
+
+
+        <!-- PHOTO 7 -->
+
+        <div class="slide">
+
+            <img src="images/photo7.jpg"
+                 alt="Photo 7">
+
+        </div>
+
+
+        <!-- PHOTO 8 -->
+
+        <div class="slide">
+
+            <img src="images/photo8.jpg"
+                 alt="Photo 8">
+
+        </div>
+
+
+
+        <!-- ================= DUPLICATE SET ================= -->
+
+        <div class="slide">
+
+            <img src="images/photo1.jpg"
+                 alt="Photo 1">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo2.jpg"
+                 alt="Photo 2">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo3.jpg"
+                 alt="Photo 3">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo4.jpg"
+                 alt="Photo 4">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo5.jpg"
+                 alt="Photo 5">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo6.jpg"
+                 alt="Photo 6">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo7.jpg"
+                 alt="Photo 7">
+
+        </div>
+
+
+        <div class="slide">
+
+            <img src="images/photo8.jpg"
+                 alt="Photo 8">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
+```

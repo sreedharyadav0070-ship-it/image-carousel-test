@@ -40,7 +40,7 @@
             font-size: 14px;
         }
 
-        /* CAROUSEL */
+        /* CAROUSEL CONTAINER */
 
         .carousel {
             width: 100%;
@@ -48,15 +48,17 @@
             padding: 10px 0 35px;
         }
 
+        /* SCROLLING TRACK */
+
         .carousel-track {
             display: flex;
             width: max-content;
             gap: 18px;
-            animation: scroll 35s linear infinite;
+            animation: scroll 25s linear infinite;
             will-change: transform;
         }
 
-        /* PAUSE WHEN THE MOUSE HOVERS */
+        /* PAUSE WHEN MOUSE HOVERS */
 
         .carousel:hover .carousel-track {
             animation-play-state: paused;
@@ -85,14 +87,14 @@
             transform: scale(1.04);
         }
 
-        /* AUTOMATIC INFINITE SCROLL */
+        /* AUTOMATIC INFINITE SCROLL KEYFRAMES */
 
         @keyframes scroll {
-            from {
+            0% {
                 transform: translateX(0);
             }
 
-            to {
+            100% {
                 transform: translateX(-50%);
             }
         }
@@ -110,7 +112,7 @@
 
             .carousel-track {
                 gap: 12px;
-                animation-duration: 28s;
+                animation-duration: 20s;
             }
 
             .slide {
@@ -126,14 +128,6 @@
             .slide {
                 width: 65vw;
                 height: 320px;
-            }
-        }
-
-        /* REDUCED MOTION ACCESSIBILITY */
-
-        @media (prefers-reduced-motion: reduce) {
-            .carousel-track {
-                animation: none;
             }
         }
     </style>
@@ -187,11 +181,15 @@
     </section>
 
     <script>
-        const track = document.getElementById("carouselTrack");
-
-        // Duplicate the photos automatically for a continuous loop.
-        track.innerHTML += track.innerHTML;
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.getElementById("carouselTrack");
+            if (track) {
+                // Safely duplicate image nodes for continuous infinite loop
+                track.innerHTML += track.innerHTML;
+            }
+        });
     </script>
 
 </body>
+
 </html>

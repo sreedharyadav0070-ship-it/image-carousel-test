@@ -1,358 +1,197 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Image Carousel</title>
-
+    <title>Image Carousel Test</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-
         body {
-
             background: #111;
-
-            font-family: Arial, sans-serif;
-
             color: white;
-
+            font-family: Arial, sans-serif;
             overflow-x: hidden;
-
+            min-height: 100vh;
         }
 
-
-        /* ================= TITLE ================= */
+        /* TITLE */
 
         .title {
-
             text-align: center;
-
-            padding: 30px 15px 20px;
-
+            padding: 30px 15px 25px;
         }
-
 
         .title h1 {
-
             font-size: 28px;
-
+            font-weight: 700;
         }
 
+        .title p {
+            color: #bbb;
+            margin-top: 10px;
+            font-size: 14px;
+        }
 
-        /* ================= CAROUSEL ================= */
+        /* CAROUSEL */
 
         .carousel {
-
             width: 100%;
-
             overflow: hidden;
-
-            padding: 10px 0 30px;
-
+            padding: 10px 0 35px;
         }
-
 
         .carousel-track {
-
             display: flex;
-
-            gap: 15px;
-
             width: max-content;
-
-            animation: scroll 30s linear infinite;
-
+            gap: 18px;
+            animation: scroll 35s linear infinite;
+            will-change: transform;
         }
 
+        /* PAUSE WHEN THE MOUSE HOVERS */
 
-        /* ================= IMAGE ================= */
+        .carousel:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        /* IMAGES */
 
         .slide {
-
-            width: 80vw;
-
-            max-width: 500px;
-
+            width: 420px;
             height: 300px;
-
             flex-shrink: 0;
-
-            border-radius: 18px;
-
             overflow: hidden;
-
+            border-radius: 18px;
+            background: #222;
         }
-
 
         .slide img {
-
             width: 100%;
-
             height: 100%;
-
             object-fit: cover;
-
             display: block;
-
+            transition: transform 0.4s ease;
         }
 
+        .slide img:hover {
+            transform: scale(1.04);
+        }
 
-        /* ================= AUTOMATIC SCROLL ================= */
+        /* AUTOMATIC INFINITE SCROLL */
 
         @keyframes scroll {
-
-            0% {
-
+            from {
                 transform: translateX(0);
-
             }
 
-            100% {
-
+            to {
                 transform: translateX(-50%);
-
             }
-
         }
 
-
-        /* ================= PHONE ================= */
+        /* MOBILE RESPONSIVE */
 
         @media (max-width: 600px) {
+            .title {
+                padding: 25px 12px 18px;
+            }
 
             .title h1 {
-
                 font-size: 24px;
-
             }
-
 
             .carousel-track {
-
-                gap: 10px;
-
-                animation-duration: 25s;
-
+                gap: 12px;
+                animation-duration: 28s;
             }
 
-
             .slide {
-
                 width: 82vw;
-
                 height: 250px;
-
                 border-radius: 15px;
-
             }
-
         }
 
+        /* TABLETS */
 
-        /* ================= TABLET / DESKTOP ================= */
-
-        @media (min-width: 601px) {
-
+        @media (min-width: 601px) and (max-width: 900px) {
             .slide {
-
-                height: 350px;
-
+                width: 65vw;
+                height: 320px;
             }
-
         }
 
+        /* REDUCED MOTION ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            .carousel-track {
+                animation: none;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
+    <header class="title">
+        <h1>📸 Our Image Gallery</h1>
+        <p>A collection of our favourite moments</p>
+    </header>
 
-<!-- ================= TITLE ================= -->
+    <section class="carousel" aria-label="Automatic image gallery">
+        <div class="carousel-track" id="carouselTrack">
 
-<div class="title">
+            <!-- ORIGINAL 8 PHOTOS -->
 
-    <h1>📸 Image Gallery</h1>
+            <div class="slide">
+                <img src="photo1.jpg" alt="Gallery photo 1">
+            </div>
 
-</div>
+            <div class="slide">
+                <img src="photo2.jpg" alt="Gallery photo 2">
+            </div>
 
+            <div class="slide">
+                <img src="photo3.jpg" alt="Gallery photo 3">
+            </div>
 
+            <div class="slide">
+                <img src="photo4.jpg" alt="Gallery photo 4">
+            </div>
 
-<!-- ================= CAROUSEL ================= -->
+            <div class="slide">
+                <img src="photo5.jpg" alt="Gallery photo 5">
+            </div>
 
-<div class="carousel">
+            <div class="slide">
+                <img src="photo6.jpg" alt="Gallery photo 6">
+            </div>
 
+            <div class="slide">
+                <img src="photo7.jpg" alt="Gallery photo 7">
+            </div>
 
-    <div class="carousel-track">
-
-
-        <!-- PHOTO 1 -->
-
-        <div class="slide">
-
-            <img src="images/photo1.jpg"
-                 alt="Photo 1">
-
-        </div>
-
-
-        <!-- PHOTO 2 -->
-
-        <div class="slide">
-
-            <img src="images/photo2.jpg"
-                 alt="Photo 2">
-
-        </div>
-
-
-        <!-- PHOTO 3 -->
-
-        <div class="slide">
-
-            <img src="images/photo3.jpg"
-                 alt="Photo 3">
+            <div class="slide">
+                <img src="photo8.jpg" alt="Gallery photo 8">
+            </div>
 
         </div>
+    </section>
 
+    <script>
+        const track = document.getElementById("carouselTrack");
 
-        <!-- PHOTO 4 -->
-
-        <div class="slide">
-
-            <img src="images/photo4.jpg"
-                 alt="Photo 4">
-
-        </div>
-
-
-        <!-- PHOTO 5 -->
-
-        <div class="slide">
-
-            <img src="images/photo5.jpg"
-                 alt="Photo 5">
-
-        </div>
-
-
-        <!-- PHOTO 6 -->
-
-        <div class="slide">
-
-            <img src="images/photo6.jpg"
-                 alt="Photo 6">
-
-        </div>
-
-
-        <!-- PHOTO 7 -->
-
-        <div class="slide">
-
-            <img src="images/photo7.jpg"
-                 alt="Photo 7">
-
-        </div>
-
-
-        <!-- PHOTO 8 -->
-
-        <div class="slide">
-
-            <img src="images/photo8.jpg"
-                 alt="Photo 8">
-
-        </div>
-
-
-
-        <!-- ================= DUPLICATE SET ================= -->
-
-        <div class="slide">
-
-            <img src="images/photo1.jpg"
-                 alt="Photo 1">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo2.jpg"
-                 alt="Photo 2">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo3.jpg"
-                 alt="Photo 3">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo4.jpg"
-                 alt="Photo 4">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo5.jpg"
-                 alt="Photo 5">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo6.jpg"
-                 alt="Photo 6">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo7.jpg"
-                 alt="Photo 7">
-
-        </div>
-
-
-        <div class="slide">
-
-            <img src="images/photo8.jpg"
-                 alt="Photo 8">
-
-        </div>
-
-
-    </div>
-
-</div>
-
+        // Duplicate the photos automatically for a continuous loop.
+        track.innerHTML += track.innerHTML;
+    </script>
 
 </body>
-
 </html>
-```

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Image Carousel Test</title>
 
     <style>
@@ -22,8 +21,6 @@
             min-height: 100vh;
         }
 
-        /* TITLE */
-
         .title {
             text-align: center;
             padding: 30px 15px 25px;
@@ -40,31 +37,23 @@
             font-size: 14px;
         }
 
-        /* CAROUSEL CONTAINER */
-
         .carousel {
             width: 100%;
             overflow: hidden;
             padding: 10px 0 35px;
         }
 
-        /* SCROLLING TRACK */
-
         .carousel-track {
             display: flex;
             width: max-content;
             gap: 18px;
-            animation: scroll 25s linear infinite;
+            animation: scroll 12s linear infinite; /* <-- Adjusted speed here */
             will-change: transform;
         }
-
-        /* PAUSE WHEN MOUSE HOVERS */
 
         .carousel:hover .carousel-track {
             animation-play-state: paused;
         }
-
-        /* IMAGES */
 
         .slide {
             width: 420px;
@@ -87,19 +76,14 @@
             transform: scale(1.04);
         }
 
-        /* AUTOMATIC INFINITE SCROLL KEYFRAMES */
-
         @keyframes scroll {
             0% {
                 transform: translateX(0);
             }
-
             100% {
                 transform: translateX(-50%);
             }
         }
-
-        /* MOBILE RESPONSIVE */
 
         @media (max-width: 600px) {
             .title {
@@ -112,7 +96,7 @@
 
             .carousel-track {
                 gap: 12px;
-                animation-duration: 20s;
+                animation-duration: 10s; /* <-- Adjusted mobile speed here */
             }
 
             .slide {
@@ -121,8 +105,6 @@
                 border-radius: 15px;
             }
         }
-
-        /* TABLETS */
 
         @media (min-width: 601px) and (max-width: 900px) {
             .slide {
@@ -142,41 +124,14 @@
 
     <section class="carousel" aria-label="Automatic image gallery">
         <div class="carousel-track" id="carouselTrack">
-
-            <!-- ORIGINAL 8 PHOTOS -->
-
-            <div class="slide">
-                <img src="photo1.jpg" alt="Gallery photo 1">
-            </div>
-
-            <div class="slide">
-                <img src="photo2.jpg" alt="Gallery photo 2">
-            </div>
-
-            <div class="slide">
-                <img src="photo3.jpg" alt="Gallery photo 3">
-            </div>
-
-            <div class="slide">
-                <img src="photo4.jpg" alt="Gallery photo 4">
-            </div>
-
-            <div class="slide">
-                <img src="photo5.jpg" alt="Gallery photo 5">
-            </div>
-
-            <div class="slide">
-                <img src="photo6.jpg" alt="Gallery photo 6">
-            </div>
-
-            <div class="slide">
-                <img src="photo7.jpg" alt="Gallery photo 7">
-            </div>
-
-            <div class="slide">
-                <img src="photo8.jpg" alt="Gallery photo 8">
-            </div>
-
+            <div class="slide"><img src="photo1.jpg" alt="Gallery photo 1"></div>
+            <div class="slide"><img src="photo2.jpg" alt="Gallery photo 2"></div>
+            <div class="slide"><img src="photo3.jpg" alt="Gallery photo 3"></div>
+            <div class="slide"><img src="photo4.jpg" alt="Gallery photo 4"></div>
+            <div class="slide"><img src="photo5.jpg" alt="Gallery photo 5"></div>
+            <div class="slide"><img src="photo6.jpg" alt="Gallery photo 6"></div>
+            <div class="slide"><img src="photo7.jpg" alt="Gallery photo 7"></div>
+            <div class="slide"><img src="photo8.jpg" alt="Gallery photo 8"></div>
         </div>
     </section>
 
@@ -184,7 +139,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             const track = document.getElementById("carouselTrack");
             if (track) {
-                // Safely duplicate image nodes for continuous infinite loop
                 track.innerHTML += track.innerHTML;
             }
         });
